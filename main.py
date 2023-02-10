@@ -1,8 +1,12 @@
+import os
 import requests
-import flask
 from flask import Flask
 app = Flask(__name__)
 
-@app.
+data = {os.environ.get("PASS") : os.environ.get("IDENTIFICATOR")}
 
-app.run()
+@app.route('/', methods= ['HEAD'])
+def handle():
+  requests.post(os.environ.get("LINK"), data=data)
+
+app.run(host='0.0.0.0', port=int(os.environ.get("HOST", 3000)))
