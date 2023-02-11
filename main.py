@@ -3,7 +3,7 @@ import requests
 from flask import Flask
 app = Flask(__name__)
 
-data = {os.environ.get("PASS") : os.environ.get("IDENTIFICATOR")}
+data = {os.environ.get("PASS"): os.environ.get("IDENTIFICATOR")}
 
 @app.route('/', methods=['HEAD'])
 def send():
