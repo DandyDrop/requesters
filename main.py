@@ -8,5 +8,7 @@ data = {os.environ.get("PASS") : os.environ.get("IDENTIFICATOR")}
 @app.route('/', methods= ['HEAD'])
 def handle():
   requests.post(os.environ.get("LINK"), data=data)
+  return ""
 
-app.run(host='0.0.0.0', port=int(os.environ.get("HOST", 3000)))
+app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 3000)))
+    
