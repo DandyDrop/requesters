@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 data = {os.environ.get("PASS"): os.environ.get("IDENTIFICATOR")}
 
-@app.route('/', methods=['HEAD'])
+@app.before_request
 def send():
     requests.post(os.environ.get('LINK'), data=data)
     return ""
