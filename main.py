@@ -7,7 +7,10 @@ data = {os.environ.get("PASS"): os.environ.get("IDENTIFICATOR")}
 
 @app.before_request
 def send():
-    requests.post(os.environ.get('LINK'), data=data)
+    try:
+        requests.post(os.environ.get('LINK'), data=data, timeout=10)
+    except requests.exceptions.ReadTimeout:
+        pass
     return ""
 
 app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 3000)))
